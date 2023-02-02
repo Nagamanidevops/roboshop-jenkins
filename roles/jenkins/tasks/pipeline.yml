@@ -1,5 +1,3 @@
-
-
 - name: Create Config file
   ansible.builtin.template:
     src: s-job.xml
