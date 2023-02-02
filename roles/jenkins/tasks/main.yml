@@ -1,3 +1,4 @@
+
 - name: crate config file
   ansible.builtin.template:
     src: job.xml
@@ -10,7 +11,4 @@
     url: http://172.31.1.32:8080
     user: admin
     password: "{{jenkinspassword}}"
-loop:
-    -frontend
-    -cart
-    -catalogue
+  loop: -frontend -cart -catalogue
