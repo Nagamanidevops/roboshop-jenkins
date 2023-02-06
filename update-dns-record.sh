@@ -12,4 +12,8 @@ echo '
       "TTL": 15,
       "ResourceRecords": [{ "Value": "IPADDRESS"}]
     }}]
-}' | sed -e "s/IPADDRESS/${IP}/" 
+}' | sed -e "s/IPADDRESS/${IP}/" >/tm
+
+ZONE_ID="Z040551911633GDXPWZA8"
+aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/jenkins.json | jq .
+
