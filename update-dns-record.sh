@@ -20,7 +20,7 @@ echo '
   "Changes": [{
     "Action": "UPSERT",
     "ResourceRecordSet": {
-      "Name": "jenkins.devopsb70.online",
+      "Name": "jenkins.devopsg70.online",
       "Type": "A",
       "TTL": 15,
       "ResourceRecords": [{ "Value": "IPADDRESS"}]
