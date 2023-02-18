@@ -8,3 +8,8 @@ ci_pipeline_jobs:
 
 folders:
   - CIPipelines
+  - Infra
+  
+  sbranch_pipeline_jobs:
+  - {name: "robohop-infra", dir: "Infra"}
+ 
