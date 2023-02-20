@@ -1,8 +1,8 @@
-- name: Check if job exist sor not  {{item.dir}}/{{item.name}}
-  ansible.builtin.shell:  -jar /opt/jenkins-cli.jar -auth admin:{{jenkinspassword}} -s http://172.31.1.32:8080 -webSocket get-job {{item.dir}}/{{item.name}}
+- name: Check if Job exists or not - {{item.dir}}/{{item.name}}
+  ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://172.31.1.32:8080 -webSocket get-job {{item.dir}}/{{item.name}}
   register: out
   ignore_errors: yes
-  
+
 - name: Create Config file - {{item.dir}}/{{item.name}}
   ansible.builtin.template:
     src: m-job.xml
@@ -11,14 +11,12 @@
     unique_key: lookup('community.general.random_string', special=false, upper=false, length=12)
   when: out.rc == 3
 
-
-- name: Create Job
+- name: Create Job - {{item.dir}}/{{item.name}}
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/m-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
     url: http://172.31.1.32:8080
     user: admin
     password: "{{jenkinspassword}}"
-    when: out.rc == 3
-    
-    
+  when: out.rc == 3
+
