@@ -12,7 +12,7 @@ folders:
   
   
 sbranch_pipeline_jobs:
-  - {name: "robohop-infra", dir: "Infra"}
+  - {name: "roboshop-infra", dir: "Infra"}
 
   
 
